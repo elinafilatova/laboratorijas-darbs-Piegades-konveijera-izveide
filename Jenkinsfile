@@ -6,9 +6,6 @@ pipeline {
             steps {
                 echo 'Installing all required dependencies...'
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
-                bat 'cd python-greetings && python -m venv venv'
-                bat 'cd python-greetings && venv\\Scripts\\pip install -r requirements.txt'
-                bat 'cd python-greetings && dir'
             }
         }
         
