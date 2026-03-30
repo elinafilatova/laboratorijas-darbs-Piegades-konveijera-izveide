@@ -3,39 +3,57 @@ pipeline {
 
     stages {
         stage ('install-pip-deps') {
-            echo "Installing all required dependencies..."
+            steps {
+                echo "Installing all required dependencies..."
+            }
         }
         
         stage ('deploy-to-dev') {
-            echo "Deploying to a development..."
+            steps{
+                echo "Deploying to a development..."
+            }
         }
 
         stage ('tests-on-dev') {
-            echo "Running tests on development..."
+            steps{
+                echo "Running tests on development..."
+            }
         }
 
         stage ('deploy-to-stg') {
-            echo "Deploying to a staging..."
+            steps{
+                echo "Deploying to a staging..."
+            }
         }
 
         stage ('tests-on-stg') {
-            echo "Running tests on staging..."
+            steps{
+                echo "Running tests on staging..."
+            }
         }
 
         stage ('deploy-to-preprod') {
-            echo "Deploying to a preprod..."
+            steps{
+                echo "Deploying to a preprod..."
+            }
         }
 
         stage ('tests-on-preprod') {
-            echo "Running tests on preprod..."
+            steps{
+                echo "Running tests on preprod..."
+            }
         }
 
         stage ('deploy-to-prod') {
-            echo "Deploying to a production..."
+            steps{
+                echo "Deploying to a production..."
+            }
         }
 
         stage ('tests-on-prod') {
-            echo "Running tests on production..."
+            steps{
+                echo "Running tests on production..."
+            }
         }
     }
 }
