@@ -112,6 +112,10 @@ def test(String environment) {
     bat """
     cd course-js-api-framework
     npm install
+    """
+    
+    bat """
+    cd course-js-api-framework 
     npm run greetings greetings_${environment}
     """
 
