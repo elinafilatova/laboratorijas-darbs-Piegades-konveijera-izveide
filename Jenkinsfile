@@ -81,7 +81,16 @@ def deploy(String environment, int port){
     bat 'git clone https://github.com/mtararujs/python-greetings.git'
     bat "C:/Users/W/AppData/Roaming/npm/pm2.cmd delete greetings-app-${environment} & EXIT /B 0"
 
-    bat "C:/Users/W/AppData/Roaming/npm/pm2.cmd start app.py --name greetings-app-${environment} --interpreter ./venv/bin/python -- --port ${port}"
+    bat '''
+    cd python-greetings
+    C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
+    venv\\Scripts\\python.exe -m pip install -r requirements.txt
+    '''
+
+    bat """
+    cd python-greetings
+    C:/Users/W/AppData/Roaming/npm/pm2.cmd start app.py --name greetings-app-${environment} --interpreter venv\\Scripts\\python.exe -- --port ${port}"
+    """
 
     bat 'C:/Users/W/AppData/Roaming/npm/pm2.cmd list'
 
