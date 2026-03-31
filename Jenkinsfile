@@ -19,7 +19,7 @@ pipeline {
         stage ('deploy-to-dev') {
             steps{
                 script{
-                    deploy("development", 7001)
+                    deploy("dev", 7001)
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage ('tests-on-dev') {
             steps{
                 script{
-                    test("development")
+                    test("dev")
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage ('deploy-to-stg') {
             steps{
                 script{
-                    deploy("staging", 7002)
+                    deploy("stg", 7002)
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage ('tests-on-stg') {
             steps{
                 script{
-                    test("staging")
+                    test("stg")
                 }
             }
         }
@@ -67,7 +67,7 @@ pipeline {
         stage ('deploy-to-prod') {
             steps{
                 script{
-                    deploy("production", 7004)
+                    deploy("prod", 7004)
                 }
             }
         }
@@ -75,7 +75,7 @@ pipeline {
         stage ('tests-on-prod') {
             steps{
                 script{
-                    test("production")
+                    test("prod")
                 }
             }
         }
@@ -113,11 +113,6 @@ def test(String environment) {
     cd course-js-api-framework
     npm install
     npm run greetings greetings_${environment}
-    """
-
-    bat """
-    cd course-js-api-framework
-    npm run greetings greetings_${environment} || echo test failed
     """
 
     echo "Tests on ${environment} enviroment finished..."
