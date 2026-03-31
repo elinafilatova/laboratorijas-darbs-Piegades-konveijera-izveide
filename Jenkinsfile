@@ -9,10 +9,11 @@ pipeline {
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
-                bat 'venv\\Scripts\\python.exe -m pip install -r requirements.txt'
-
+                bat 'C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv'
                 
-
+                
+                bat 'venv\\Scripts\\activate'
+                bat 'pip install -r requirements.txt'
             }
         }
         
