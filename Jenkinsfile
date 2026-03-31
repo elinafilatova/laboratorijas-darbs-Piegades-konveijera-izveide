@@ -89,7 +89,7 @@ def deploy(String environment, int port){
 
     bat """
     cd python-greetings
-    C:/Users/W/AppData/Roaming/npm/pm2.cmd start app.py --name greetings-app-${environment} --interpreter venv\\Scripts\\python.exe -- --port ${port}
+    C:/Users/W/AppData/Roaming/npm/pm2.cmd start app.py --name greetings-app-${environment} --interpreter ./venv/bin/python -- --port ${port}
     """
 
     bat 'C:/Users/W/AppData/Roaming/npm/pm2.cmd list'
