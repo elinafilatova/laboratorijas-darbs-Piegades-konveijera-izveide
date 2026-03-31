@@ -80,5 +80,7 @@ def deploy(String environment){
     bat 'if exist python-greetings rmdir /s /q python-greetings'
     bat 'git clone https://github.com/mtararujs/python-greetings.git'
 
+    echo 'pm2 delete greetings-app-${environment} & set "errorlevel=0"'
+
     echo "Deployment to ${environment} environment finished.."
 }
