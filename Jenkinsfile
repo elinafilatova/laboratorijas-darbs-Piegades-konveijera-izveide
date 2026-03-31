@@ -75,7 +75,7 @@ pipeline {
 }
 
 
-def deploy(String environment, Int port){
+def deploy(String environment, int port){
     echo "Deployment to ${environment} environment has started.."
     bat 'if exist python-greetings rmdir /s /q python-greetings'
     bat 'git clone https://github.com/mtararujs/python-greetings.git'
