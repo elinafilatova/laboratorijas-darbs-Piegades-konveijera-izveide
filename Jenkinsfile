@@ -9,7 +9,7 @@ pipeline {
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
-                bat 'C:/Users/W/AppData/Local/Microsoft/WindowsApps/python.exe -m venv venv'
+                bat 'py -3 -m venv venv'
                 // bat './venv/bin/python -m pip install -r requirements.txt'
             }
         }
