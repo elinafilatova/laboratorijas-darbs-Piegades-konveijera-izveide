@@ -9,7 +9,7 @@ pipeline {
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
-                bat 'python3 -m venv venv'
+                // bat 'python3 -m venv venv'
 
                 // !!! + Veikt Python virtualizētas vides izveidi un izsaukt komandu nepieciešamo bibliotēku/pakotņu instalācijai pret virtualizēto vidi
             }
@@ -66,17 +66,3 @@ pipeline {
 }
 
 
-// def deploy(String environment){
-//     echo ""
-// }
-
-
-
-// def deploy(String environment){
-//     echo "Deployment to ${environment} environment has started.."
-//     sh "docker pull mtararujs/sample-book-app"
-//     sh "docker compose stop sample-book-app-${environment}"
-//     sh "docker compose rm sample-book-app-${environment}"
-//     sh "docker compose up -d sample-book-app-${environment}"
-//     echo "Deployment to ${environment} environment finished.."
-// }
