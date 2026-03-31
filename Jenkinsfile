@@ -108,6 +108,7 @@ def test(String environment) {
 }
 
 
+
 // def test(String environment){
 //     echo "Testing Sample Book Application service has started on ${environment} environment.."
 //     sh "docker pull mtararujs/api-tests:latest"
