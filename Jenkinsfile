@@ -10,8 +10,8 @@ pipeline {
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
                 bat 'C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv'
-                
-                bat 'venv/Scripts/python.exe -m pip install -r requirements.txt'
+
+                bat '\\venv\\Scripts\\python.exe -m pip install -r requirements.txt'
 
             }
         }
