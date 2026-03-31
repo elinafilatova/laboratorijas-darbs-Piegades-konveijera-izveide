@@ -9,6 +9,8 @@ pipeline {
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
+
+                bat 'python3 -m venv venv'
             }
         }
         
