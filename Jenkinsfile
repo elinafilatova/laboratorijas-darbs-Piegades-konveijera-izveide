@@ -26,7 +26,9 @@ pipeline {
 
         stage ('tests-on-dev') {
             steps{
-                echo 'Running tests on development..'
+                script{
+                    test("development")
+                }
             }
         }
 
@@ -40,7 +42,9 @@ pipeline {
 
         stage ('tests-on-stg') {
             steps{
-                echo 'Running tests on staging...'
+                script{
+                    test("staging")
+                }
             }
         }
 
@@ -54,7 +58,9 @@ pipeline {
 
         stage ('tests-on-preprod') {
             steps{
-                echo 'Running tests on preprod...'
+                script{
+                    test("preprod")
+                }
             }
         }
 
@@ -68,7 +74,9 @@ pipeline {
 
         stage ('tests-on-prod') {
             steps{
-                echo 'Running tests on production...'
+                script{
+                    test("production")
+                }
             }
         }
     }
@@ -77,25 +85,36 @@ pipeline {
 
 def deploy(String environment, int port){
     echo "Deployment to ${environment} environment has started.."
-
     bat 'C:/Users/W/AppData/Roaming/npm/pm2.cmd kill & EXIT /B 0'
-
     bat 'if exist python-greetings rmdir /s /q python-greetings'
     bat 'git clone https://github.com/mtararujs/python-greetings.git'
     bat "C:/Users/W/AppData/Roaming/npm/pm2.cmd delete greetings-app-${environment} & EXIT /B 0"
-
     bat '''
     cd python-greetings
     C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
     venv\\Scripts\\python.exe -m pip install -r requirements.txt
     '''
-
     bat """
     cd python-greetings
     C:/Users/W/AppData/Roaming/npm/pm2.cmd start app.py --name greetings-app-${environment} --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${port}
     """
-
     bat 'C:/Users/W/AppData/Roaming/npm/pm2.cmd list'
-
     echo "Deployment to ${environment} environment finished.."
 }
+
+
+def test(String environment) {
+    echo "Running tests on ${environment}..."
+}
+
+
+// def test(String environment){
+//     echo "Testing Sample Book Application service has started on ${environment} environment.."
+//     sh "docker pull mtararujs/api-tests:latest"
+//     def directory = pwd()
+//     sh "echo '${directory}'"
+//     sh "docker run --rm --network sample-book-app-compose-network -v '${directory}':/api-tests/mochawesome-report mtararujs/api-tests books BOOKS_${environment}"
+//     sh "ls"
+//     archiveArtifacts allowEmptyArchive: true, artifacts: 'mochawesome.json', followSymlinks: false
+//     echo "Testing Sample Book Application service finished.."
+// }
