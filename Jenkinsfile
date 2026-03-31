@@ -10,7 +10,7 @@ pipeline {
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
 
-                call "C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe" -m venv venv
+                bat 'C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv'
             }
         }
         
