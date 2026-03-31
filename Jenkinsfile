@@ -115,6 +115,11 @@ def test(String environment) {
     npm run greetings greetings_${environment}
     """
 
+    bat """
+    cd course-js-api-framework
+    npm run greetings greetings_${environment} || echo test failed
+    """
+
     echo "Tests on ${environment} enviroment finished..."
 }
 
