@@ -9,8 +9,6 @@ pipeline {
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
-                bat 'py -3 -m venv venv'
-                // bat './venv/bin/python -m pip install -r requirements.txt'
             }
         }
         
