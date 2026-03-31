@@ -7,8 +7,10 @@ pipeline {
                 echo 'Installing all required dependencies...'
                 bat 'if exist python-greetings rmdir /s /q python-greetings'
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
-                bat 'cd python-greetings && dir'
-                bat 'cd python-greetings && C:/Users/W/AppData/Local/Microsoft/WindowsApps/python.exe -m venv venv'
+                bat 'dir python-greetings'
+                
+                
+                //bat 'cd python-greetings && C:/Users/W/AppData/Local/Microsoft/WindowsApps/python.exe -m venv venv'
             }
         }
         
