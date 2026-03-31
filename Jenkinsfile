@@ -10,7 +10,7 @@ pipeline {
                 bat 'dir python-greetings'
                 bat 'cd python-greetings'
 
-                bat 'python3 -m venv venv'
+                bat 'py -m venv venv'
             }
         }
         
