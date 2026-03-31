@@ -19,7 +19,7 @@ pipeline {
         stage ('deploy-to-dev') {
             steps{
                 script{
-                    deploy("development")
+                    deploy("development", 7001)
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
         stage ('deploy-to-stg') {
             steps{
                 script{
-                    deploy("staging")
+                    deploy("staging", 7002)
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline {
         stage ('deploy-to-preprod') {
             steps{
                 script{
-                    deploy("preprod")
+                    deploy("preprod", 7003)
                 }
             }
         }
@@ -61,7 +61,7 @@ pipeline {
         stage ('deploy-to-prod') {
             steps{
                 script{
-                    deploy("production")
+                    deploy("production", 7004)
                 }
             }
         }
@@ -75,12 +75,13 @@ pipeline {
 }
 
 
-def deploy(String environment){
+def deploy(String environment, Int port){
     echo "Deployment to ${environment} environment has started.."
     bat 'if exist python-greetings rmdir /s /q python-greetings'
     bat 'git clone https://github.com/mtararujs/python-greetings.git'
-
     bat "C:/Users/W/AppData/Roaming/npm/pm2.cmd delete greetings-app-${environment} & EXIT /B 0"
+
+    bat "C:/Users/W/AppData/Roaming/npm/pm2.cmd start app.py --name python-greetings-${environment} --interpreter venv\\Scripts\\python.exe -- --port ${port}"
 
     echo "Deployment to ${environment} environment finished.."
 }
