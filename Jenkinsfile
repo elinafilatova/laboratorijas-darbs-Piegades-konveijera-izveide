@@ -105,17 +105,22 @@ def deploy(String environment, int port){
 
 def test(String environment) {
     echo "Running tests on ${environment}..."
+
+
+    bat 'if exist course-js-api-framework rmdir /s /q course-js-api-framework'
+    bat 'git clone https://github.com/mtararujs/course-js-api-framework.git'
+
+
+    echo "Tests on ${environment} enviroment finished..."
 }
 
 
 
 // def test(String environment){
-//     echo "Testing Sample Book Application service has started on ${environment} environment.."
 //     sh "docker pull mtararujs/api-tests:latest"
 //     def directory = pwd()
 //     sh "echo '${directory}'"
 //     sh "docker run --rm --network sample-book-app-compose-network -v '${directory}':/api-tests/mochawesome-report mtararujs/api-tests books BOOKS_${environment}"
 //     sh "ls"
 //     archiveArtifacts allowEmptyArchive: true, artifacts: 'mochawesome.json', followSymlinks: false
-//     echo "Testing Sample Book Application service finished.."
 // }
