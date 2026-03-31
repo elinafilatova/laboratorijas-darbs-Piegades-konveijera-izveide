@@ -8,7 +8,7 @@ pipeline {
                 bat 'if exist python-greetings rmdir /s /q python-greetings'
                 bat 'git clone https://github.com/mtararujs/python-greetings.git'
                 bat 'dir python-greetings'
-                bat 'cd python-greetings && py -m venv venv'
+                bat 'cd python-greetings && python3 -m venv venv'
                 bat 'cd python-greetings && venv/Scripts/activate'
             }
         }
