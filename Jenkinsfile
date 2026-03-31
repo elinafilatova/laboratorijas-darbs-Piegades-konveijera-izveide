@@ -12,14 +12,15 @@ pipeline {
                 cd python-greetings
                 C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
                 venv\\Scripts\\python.exe -m pip install -r requirements.txt
-                
                 '''
             }
         }
         
         stage ('deploy-to-dev') {
             steps{
-                echo 'Deploying to a development...'
+                script{
+                    deploy("development")
+                }
             }
         }
 
@@ -31,7 +32,9 @@ pipeline {
 
         stage ('deploy-to-stg') {
             steps{
-                echo 'Deploying to a staging...'
+                script{
+                    deploy("staging")
+                }
             }
         }
 
@@ -43,7 +46,9 @@ pipeline {
 
         stage ('deploy-to-preprod') {
             steps{
-                echo 'Deploying to a preprod...'
+                script{
+                    deploy("preprod")
+                }
             }
         }
 
@@ -55,7 +60,9 @@ pipeline {
 
         stage ('deploy-to-prod') {
             steps{
-                echo 'Deploying to a production...'
+                script{
+                    deploy("production")
+                }
             }
         }
 
@@ -68,3 +75,7 @@ pipeline {
 }
 
 
+def deploy(String environment){
+    echo "Deployment to ${environment} environment has started.."
+    echo "Deployment to ${environment} environment finished.."
+}
