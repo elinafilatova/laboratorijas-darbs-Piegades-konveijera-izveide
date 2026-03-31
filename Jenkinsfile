@@ -11,8 +11,8 @@ pipeline {
                 bat '''
                 cd python-greetings
                 C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
-                venv\\Scripts\\activate
-                C:/Users/W/AppData/Local/Programs/Python/Python313/python.exe -m pip install -r requirements.txt
+                venv\\Scripts\\python.exe -m pip install -r requirements.txt
+                
                 '''
             }
         }
