@@ -105,20 +105,16 @@ def deploy(String environment, int port){
 
 def test(String environment) {
     echo "Running tests on ${environment}..."
-
     bat 'if exist course-js-api-framework rmdir /s /q course-js-api-framework'
     bat 'git clone https://github.com/mtararujs/course-js-api-framework.git'
-
     bat """
     cd course-js-api-framework
     npm install
     """
-    
     bat """
     cd course-js-api-framework 
     npm run greetings greetings_${environment}
     """
-
     echo "Tests on ${environment} enviroment finished..."
 }
 
